@@ -16,11 +16,11 @@ export const getAllEntityFunction = (page, skip) => async (dispatch) => {
   try {
      
     let { data } = await axios.get(
-      `http://localhost:8000/entity?_page=${page}&_limit=${skip}`
+      `https://petsiteserver.herokuapp.com/petData?page=${page}&size=${skip}`
     );
     // console.log(data);
     dispatch(addAllEntity(data));
-    let count = await axios.get("http://localhost:5000/entity");
+    let count = await axios.get("https://petsiteserver.herokuapp.com/petData");
     dispatch(totalCount(count.data.length));
   } catch (err) {
     console.log(err.message);
@@ -29,7 +29,7 @@ export const getAllEntityFunction = (page, skip) => async (dispatch) => {
 
 export const addEntityFunction = (body) => async (dispatch) => {
   try {
-    let { data } = await axios.post("http://localhost:8000/entity", body);
+    let { data } = await axios.post("https://petsiteserver.herokuapp.com/petData", body);
     // console.log(data);
     dispatch(getAllEntityFunction());
   } catch (err) {
@@ -40,7 +40,7 @@ export const addEntityFunction = (body) => async (dispatch) => {
 export const getFilterEntityFunction =
   (page, skip, filter) => async (dispatch) => {
     try {
-      let { data } = await axios.get(`http://localhost:8000/entity`);
+      let { data } = await axios.get(`https://petsiteserver.herokuapp.com/petData`);
       if (filter.city != "") {
         data = data.filter((el) => el.city == filter.city);
       }
@@ -63,7 +63,7 @@ export const getFilterEntityFunction =
 
 export const getallCitiesFunction = () => async (dispatch) => {
   try {
-    let { data } = await axios.get(`http://localhost:8000/cities`);
+    let { data } = await axios.get(`https://petsiteserver.herokuapp.com/city`);
     dispatch(addAllCity(data));
   } catch (err) {
     console.log(err.message);

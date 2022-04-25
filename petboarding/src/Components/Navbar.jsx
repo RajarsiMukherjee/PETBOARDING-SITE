@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./Login.css";
 import { useNavigate } from "react-router-dom";
  import { logout } from "../Redux/Login/Action";
 
@@ -21,7 +22,7 @@ export default function Navbar() {
   };
 
   return (
-    <div>
+    <div className="NavDiv">
       <Box sx={{ width: '100%', typography: 'body1' }}>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>

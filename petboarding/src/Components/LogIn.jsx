@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { login} from "../Redux/Login/Action"
 import { login} from "../Redux/Login/Action"
 import { Navigate } from 'react-router-dom';
+import "./Login.css";
 
 export default function LogIn() {
 
@@ -23,14 +24,14 @@ export default function LogIn() {
   }
 
   return (
-    <div>
+    <div className='loginContainer'>
       <h1>Login</h1>
 
       <input type="text" placeholder='Enter UserName' onChange={(e) => {setUsername(e.target.value)}}/><br /><br />
 
       <input type="text" placeholder='Enter Password' onChange={(e) => {setPassword(e.target.value)}} /><br /><br />
 
-      <button onClick={handleLogin}>Login</button>
+      <button className='LoginButton' onClick={handleLogin}>Login</button>
     </div>
   )
 }
